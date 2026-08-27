@@ -9,7 +9,7 @@ public class BaseUI {
 
     public void setUpChrome(){
         ChromeOptions options = new ChromeOptions();
-       // options.addArguments("--headless");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
 
