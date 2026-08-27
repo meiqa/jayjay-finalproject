@@ -9,6 +9,8 @@ import java.time.Duration;
 
 public class LogInOutPage extends BaseUI {
 
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
     By btnLogin = By.id("login2") ;
     By txtUsername = By.id("loginusername") ;
     By txtPassword = By.id("loginpassword") ;
@@ -23,11 +25,12 @@ public class LogInOutPage extends BaseUI {
     }
 
     public void enterUsername(String username) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(txtUsername));
         driver.findElement(txtUsername).sendKeys(username);
     }
 
     public void enterPassword(String password) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(txtPassword));
         driver.findElement(txtPassword).sendKeys(password);
     }
 
@@ -36,7 +39,7 @@ public class LogInOutPage extends BaseUI {
     }
 
     public String getDisplayName() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
         wait.until(ExpectedConditions.textToBePresentInElementLocated(txtDisplayName, "Welcome test"));
         return driver.findElement(txtDisplayName).getText();
     }
