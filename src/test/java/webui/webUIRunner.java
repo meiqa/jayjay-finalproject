@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         glue = {"webui"},
         features = {"src/test/resources/webui/features"},
         tags = "@web",
-        plugin = {"pretty", "html:reports/ui-report.html", "json:reports/ui-report.json"}
+        plugin = {"pretty", "html:reports/web/ui-report.html", "json:reports/web/ui-report.json"}
 )
 
 

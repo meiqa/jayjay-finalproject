@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         glue = {"api.stepDefinitions"},
         features = {"src/test/resources/api/features"},
         tags = "@api",
-        plugin = {"pretty", "html:reports/api-report.html", "json:reports/api-report.json"}
+        plugin = {"pretty", "html:reports/api/api-report.html", "json:reports/api/api-report.json"}
 )
 
 public class apiRunner {
