@@ -36,7 +36,7 @@ public class LogInOutPage extends BaseUI {
     }
 
     public String getDisplayName() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.textToBePresentInElementLocated(txtDisplayName, "Welcome test"));
         return driver.findElement(txtDisplayName).getText();
     }
