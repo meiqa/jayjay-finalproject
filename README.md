@@ -99,13 +99,13 @@ https://www.demoblaze.com/
 
 \### API
 
-./gradlew cucumber -Ptags=@api
+./gradlew apiCucumber
 
 
 
 \### Web UI
 
-./gradlew cucumber -Ptags=@web
+./gradlew webCucumber
 
 
 

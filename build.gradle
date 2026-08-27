@@ -36,17 +36,33 @@ configurations {
 
 def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
 
-tasks.register("cucumber", JavaExec) {
-    description = "Running Cucumber"
+tasks.register("apiCucumber", JavaExec) {
+    description = "Running API Test"
     dependsOn assemble, compileTestJava
     classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
     mainClass = "io.cucumber.core.cli.Main"
     args = [
-            '--plugin', 'html:reports/test-report.html',
+            '--plugin', 'html:reports/api/api-report.html',
+            '--plugin', 'json:reports/api/api-report.html',
             '--plugin', 'pretty',
             '--glue', 'api',
+            '--tags', "@api",
+            'src/test/resources/api'
+    ]
+
+}
+
+tasks.register("webCucumber", JavaExec) {
+    description = "Running Web UI Test"
+    dependsOn assemble, compileTestJava
+    classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+    mainClass = "io.cucumber.core.cli.Main"
+    args = [
+            '--plugin', 'html:reports/web/ui-report.html',
+            '--plugin', 'json:reports/web/ui-report.html',
+            '--plugin', 'pretty',
             '--glue', 'webui',
-            '--tags', "${tags}",
-            'src/test/resources/'
+            '--tags', "@web",
+            'src/test/resources/webui'
     ]
 }
